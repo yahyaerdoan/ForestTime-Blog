@@ -18,5 +18,11 @@ namespace ForestTime.Entitylayer.Concrete
         public int? ViewingCount { get; set; } = null;
         public string Description { get; set; } = string.Empty;
         public bool? Status { get; set; } = null;
+
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
+
+        public int UserId { get; set; }
+        public User User { get; set; }
     }
 }

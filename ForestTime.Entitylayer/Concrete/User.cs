@@ -17,5 +17,6 @@ namespace ForestTime.Entitylayer.Concrete
         public DateTime? UpdatedDate { get; set; } = null;    
         public string Description { get; set; } = string.Empty;
         public bool? Status { get; set; } = null;
+        public List<Blog> Blogs { get; set; }
     }
 }

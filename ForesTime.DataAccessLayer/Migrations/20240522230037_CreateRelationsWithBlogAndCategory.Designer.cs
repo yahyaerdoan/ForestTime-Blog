@@ -4,6 +4,7 @@ using ForestTime.DataAccessLayer.Concrete.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForestTime.DataAccessLayer.Migrations
 {
     [DbContext(typeof(ForestTimeDbContext))]
-    partial class ForestTimeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240522230037_CreateRelationsWithBlogAndCategory")]
+    partial class CreateRelationsWithBlogAndCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,17 +64,12 @@ namespace ForestTime.DataAccessLayer.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("ViewingCount")
                         .HasColumnType("int");
 
                     b.HasKey("BlogId");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Blogs");
                 });
@@ -364,15 +361,7 @@ namespace ForestTime.DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ForestTime.Entitylayer.Concrete.User", "User")
-                        .WithMany("Blogs")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Category");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -427,11 +416,6 @@ namespace ForestTime.DataAccessLayer.Migrations
                 });
 
             modelBuilder.Entity("ForestTime.Entitylayer.Concrete.Category", b =>
-                {
-                    b.Navigation("Blogs");
-                });
-
-            modelBuilder.Entity("ForestTime.Entitylayer.Concrete.User", b =>
                 {
                     b.Navigation("Blogs");
                 });

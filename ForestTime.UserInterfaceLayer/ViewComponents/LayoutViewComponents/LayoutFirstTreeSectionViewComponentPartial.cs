@@ -14,8 +14,8 @@ namespace ForestTime.UserInterfaceLayer.ViewComponents.LayoutViewComponents
 
         public IViewComponentResult Invoke() 
         {
-           var values = _blogService.GetAll();
-            return View(values);
+           //var values = _blogService.GetAll();
+            return View();
         }
     }
 }

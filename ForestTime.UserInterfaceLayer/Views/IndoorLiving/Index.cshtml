@@ -1,9 +1,9 @@
 ﻿
 @{
-    ViewData["Title"] = "Default";
+    ViewData["Title"] = "Indoor Living";
     Layout = "~/Views/Layout/Index.cshtml";
 }
 
-@await Component.InvokeAsync("LayoutFirstTreeSectionViewComponentPartial")
+@await Component.InvokeAsync("PageTitleViewComponentPartial",  ViewData["Title"])
 
 @await Component.InvokeAsync("LayoutRightSectionViewComponentPartial")

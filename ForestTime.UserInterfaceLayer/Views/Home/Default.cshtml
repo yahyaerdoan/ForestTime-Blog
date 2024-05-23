@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewData["Title"] = "Default";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+@await Component.InvokeAsync("LayoutFirstTreeSectionViewComponentPartial")
+
+@await Component.InvokeAsync("LayoutRightSectionViewComponentPartial")
+

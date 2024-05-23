@@ -18,8 +18,4 @@
     <ProjectReference Include="..\ForestTime.BusinessLayer\ForestTime.BusinessLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\Defaults\" />
-  </ItemGroup>
-
 </Project>

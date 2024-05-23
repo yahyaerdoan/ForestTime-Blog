@@ -16,10 +16,8 @@
         @await Component.InvokeAsync("LayoutLogoHeaderViewComponentPartial")
 
         @await Component.InvokeAsync("LayoutNavbarViewComponentPartial")
-
-        @await Component.InvokeAsync("LayoutFirstTreeSectionViewComponentPartial")
- 
-        @await Component.InvokeAsync("LayoutRightSectionViewComponentPartial")
+        
+        @RenderBody()    
 
         @await Component.InvokeAsync("LayoutFooterViewCopmponentPartial")
 

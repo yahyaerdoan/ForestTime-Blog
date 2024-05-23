@@ -1,7 +1,35 @@
+using ForestTime.BusinessLayer.Abstract.IAbstracService;
+using ForestTime.BusinessLayer.Concrete.ConcreteManager;
+using ForestTime.DataAccessLayer.Abstract.IAbstactDal;
+using ForestTime.DataAccessLayer.Concrete.Context;
+using ForestTime.DataAccessLayer.Concrete.EntityFramework;
+using ForestTime.Entitylayer.Concrete;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<IdentityDbContext<User, Role, int>, ForestTimeDbContext>();
+
+builder.Services.AddScoped<IBlogDal, EfBlogDal>();
+builder.Services.AddScoped<IBlogService, BlogManager>();
+
+builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
+builder.Services.AddScoped<ICategoryService, CategoryManager>();
+
+builder.Services.AddScoped<ICommentDal, EfCommentDal>();
+builder.Services.AddScoped<ICommentService, CommentManager>();
+
+builder.Services.AddScoped<IUserDal, EfUserDal>();
+builder.Services.AddScoped<IUserService, UserManager>();
+
+builder.Services.AddScoped<IRoleDal, EfRoleDal>();
+builder.Services.AddScoped<IRoleService, RoleManager>();
+
+builder.Services.AddIdentity<User, Role>()
+    .AddEntityFrameworkStores<ForestTimeDbContext>();
 builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 
@@ -18,6 +46,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthorization();
 app.UseAuthorization();
 
 app.MapControllerRoute(

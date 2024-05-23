@@ -9,7 +9,6 @@ namespace ForestTime.Entitylayer.Concrete
 {
     public class User : IdentityUser<int>
     {
-        public int UserId { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public string ImageUrl { get; set; } = string.Empty;   

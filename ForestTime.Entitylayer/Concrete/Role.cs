@@ -9,6 +9,5 @@ namespace ForestTime.Entitylayer.Concrete
 {
     public class Role : IdentityRole<int>
     {
-        public int RoleId { get; set; }
     }
 }

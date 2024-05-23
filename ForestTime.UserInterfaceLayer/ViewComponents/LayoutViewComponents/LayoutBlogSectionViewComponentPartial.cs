@@ -2,7 +2,7 @@
 
 namespace ForestTime.UserInterfaceLayer.ViewComponents.LayoutViewComponents
 {
-    public class LayoutRightSectionViewComponentPartial : ViewComponent
+    public class LayoutBlogSectionViewComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke() {  return View(); }
     }

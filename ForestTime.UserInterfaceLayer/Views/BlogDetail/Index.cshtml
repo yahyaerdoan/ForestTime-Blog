@@ -1,9 +1,9 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Blog Detail";
     Layout = "~/Views/Layout/Index.cshtml";
 }
 
-<h1>Index</h1>
+@await Component.InvokeAsync("PageTitleViewComponentPartial",  ViewData["Title"])
 
 @await Component.InvokeAsync("BlogDetailViewComponentPartial")

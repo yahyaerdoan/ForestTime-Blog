@@ -33,7 +33,7 @@ namespace ForestTime.UserInterfaceLayer.Controllers.Entries
             };
 
             var result = await _userManager.CreateAsync(user, createUserDto.Password);
-                 if (result.Succeeded)
+            if (result.Succeeded)
             {
                 return RedirectToAction("Default", "Home");
             }

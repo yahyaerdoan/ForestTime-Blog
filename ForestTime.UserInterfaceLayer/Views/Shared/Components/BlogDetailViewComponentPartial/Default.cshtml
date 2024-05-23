@@ -229,12 +229,9 @@
                             </div>
                         </div>
                     </div>
-
-                    @await Component.InvokeAsync("LayoutRightSectionViewComponentPartial")
-
-                    
                 </div><!-- end page-wrapper -->
-            </div><!-- end col -->           
+            </div><!-- end col -->
+            @await Component.InvokeAsync("BlogRightSectionViewComponentPartial")
         </div><!-- end row -->
     </div><!-- end container -->
 </section>

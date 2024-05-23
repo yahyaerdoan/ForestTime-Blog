@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+@await Component.InvokeAsync("LayoutHeadViewComponentPartial")
+<body>
+
+    <div id="wrapper">
+        @await Component.InvokeAsync("LayoutSearcBarViewComponentPartial")
+
+        @await Component.InvokeAsync("LayoutTopBarViewComponentPartial")
+
+        @await Component.InvokeAsync("LayoutLogoHeaderViewComponentPartial")
+
+        @await Component.InvokeAsync("LayoutNavbarViewComponentPartial")
+
+        @await Component.InvokeAsync("LayoutFirstTreeSectionViewComponentPartial")
+ 
+        @await Component.InvokeAsync("LayoutRightSectionViewComponentPartial")
+
+        @await Component.InvokeAsync("LayoutFooterViewCopmponentPartial")
+
+        <div class="dmtop">Scroll to Top</div>
+
+    </div><!-- end wrapper -->
+    @await Component.InvokeAsync("LayoutScriptViewComponentPartial")
+
+</body>
+</html>

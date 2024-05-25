@@ -5,6 +5,7 @@ namespace ForestTime.BusinessLayer.Abstract.IAbstracService
 {
     public interface IBlogService : IGenericService<Blog>
     {
+        Task<Blog?> GetBlogDetailById(int id);
         Task<List<Blog>> GetBlogsWithCategoryAndUserAsync();
     } 
 }

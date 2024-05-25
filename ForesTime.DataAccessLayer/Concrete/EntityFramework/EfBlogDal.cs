@@ -20,5 +20,11 @@ namespace ForestTime.DataAccessLayer.Concrete.EntityFramework
             var values = await _forestTimeDbContext.Blogs.AsNoTracking().Include(x => x.Category).Include(y => y.User).ToListAsync();
             return (values);
         }
+
+        public async Task<Blog?> GetBlogDetailById(int id)
+        {
+            var values = await _forestTimeDbContext.Blogs.AsNoTracking().Where(x=> x.BlogId == id).Include(x=> x.Category).Include(x=> x.User).  FirstOrDefaultAsync();
+            return (values);
+        }
     }
 }

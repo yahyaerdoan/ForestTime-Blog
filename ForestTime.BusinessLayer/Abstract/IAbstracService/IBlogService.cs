@@ -5,4 +5,6 @@ namespace ForestTime.BusinessLayer.Abstract.IAbstracService
 {
     public interface IBlogService : IGenericService<Blog>
     {
-    } }
+        List<Blog> GetBlogsWithCategoryAndUser();
+    } 
+}

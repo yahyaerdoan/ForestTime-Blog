@@ -1,27 +1,35 @@
-﻿<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+﻿@model List<Blog>
+<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
     <div class="page-wrapper">
         <div class="blog-list clearfix">
-            <div class="blog-box row">
-                <div class="col-md-4">
-                    <div class="post-media">
-                        <a href="garden-single.html" title="">
-                            <img src="~/template/forest-time/upload/garden_sq_01.jpg" alt="" class="img-fluid">
-                            <div class="hovereffect"></div>
-                        </a>
-                    </div><!-- end media -->
-                </div><!-- end col -->
+            @foreach (var item in Model)
+            {
+                <div class="blog-box row">
+                    <div class="col-md-4">
+                        <div class="post-media">
+                            <a href="garden-single.html" title="">
+                                <img src="@item.ThumbnailImageUrl" alt="" class="img-fluid">
+                                <div class="hovereffect"></div>
+                            </a>
+                        </div><!-- end media -->
+                    </div><!-- end col -->
 
-                <div class="blog-meta big-meta col-md-8">
-                    <span class="bg-aqua"><a href="garden-category.html" title="">Indoorpppp</a></span>
-                    <h4><a href="garden-single.html" title="">The best twenty plant species you can look at at home</a></h4>
-                    <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
-                    <small><a href="garden-category.html" title=""><i class="fa fa-eye"></i> 1887</a></small>
-                    <small><a href="garden-single.html" title="">11 July, 2017</a></small>
-                    <small><a href="#" title="">by Matilda</a></small>
-                </div><!-- end meta -->
-            </div><!-- end blog-box -->
+                    <div class="blog-meta big-meta col-md-8">
+                        <span class="bg-aqua"><a href="garden-category.html" title="">@item.Category.Name</a></span>
+                        <h4><a href="garden-single.html" title="">@item.Title</a></h4>
+                        <p>@item.Description</p>
+                        <small><a href="garden-category.html" title=""><i class="fa fa-eye"></i>@item.ViewingCount</a></small>
+                        <small><a href="garden-single.html" title="">@item.CreatedDate</a></small>
+                        <small><a href="#" title="">by @item.User.FirstName @item.User.LastName</a></small>
+                    </div><!-- end meta -->
+                </div>
 
-            <hr class="invis">
+                <!-- end blog-box -->
+
+                <hr class="invis">
+            }
+
+            
 
             <div class="blog-box row">
                 <div class="col-md-4">

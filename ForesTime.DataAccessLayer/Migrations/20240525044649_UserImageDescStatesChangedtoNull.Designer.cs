@@ -4,6 +4,7 @@ using ForestTime.DataAccessLayer.Concrete.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForestTime.DataAccessLayer.Migrations
 {
     [DbContext(typeof(ForestTimeDbContext))]
-    partial class ForestTimeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240525044649_UserImageDescStatesChangedtoNull")]
+    partial class UserImageDescStatesChangedtoNull
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -9,13 +9,13 @@ namespace ForestTime.Entitylayer.Concrete
 {
     public class User : IdentityUser<int>
     {
-        public string FirstName { get; set; } = string.Empty;
-        public string LastName { get; set; } = string.Empty;
-        public string ImageUrl { get; set; } = string.Empty;   
-        public DateTime? CreatedDate { get; set; } = null;
-        public DateTime? UpdatedDate { get; set; } = null;    
-        public string Description { get; set; } = string.Empty;
-        public bool? Status { get; set; } = null;
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string? ImageUrl { get; set; } = null;
+        public DateTime? CreatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; } 
+        public string? Description { get; set; } = null;
+        public bool Status { get; set; }
         public List<Blog> Blogs { get; set; }
     }
 }

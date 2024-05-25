@@ -9,8 +9,8 @@ namespace ForestTime.Entitylayer.Concrete
     public class Comment
     {
         public int CommentId { get; set; }
-        public string CommentText { get; set; } = string.Empty;
-        public DateTime? CommentDate { get; set; } = null;
-        public bool? Status { get; set; } = false;
+        public string CommentText { get; set; }
+        public DateTime CommentDate { get; set; }
+        public bool Status { get; set; }
     }
 }

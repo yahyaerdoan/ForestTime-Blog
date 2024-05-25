@@ -9,9 +9,9 @@ namespace ForestTime.Entitylayer.Concrete
     public class Category
     {
         public int CategoryId { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public bool? Status { get; set; } = null;
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public bool Status { get; set; }
         public List<Blog> Blogs { get; set; }
     }
 }

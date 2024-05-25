@@ -9,15 +9,15 @@ namespace ForestTime.Entitylayer.Concrete
     public class Blog
     {
         public int BlogId { get; set; }
-        public string Title { get; set; } = string.Empty;
-        public string Header { get; set; } = string.Empty;
-        public string CoverImageUrl { get; set; } = string.Empty;
-        public string ThumbnailImageUrl { get; set; } = string.Empty;
-        public DateTime? CreatedDate { get; set; } = null;
-        public DateTime? UpdatedDate { get; set; } = null;
-        public int? ViewingCount { get; set; } = null;
-        public string Description { get; set; } = string.Empty;
-        public bool? Status { get; set; } = null;
+        public string Title { get; set; }
+        public string Header { get; set; }
+        public string CoverImageUrl { get; set; }
+        public string ThumbnailImageUrl { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
+        public int ViewingCount { get; set; }
+        public string Description { get; set; }
+        public bool Status { get; set; }
 
         public int CategoryId { get; set; }
         public Category Category { get; set; }

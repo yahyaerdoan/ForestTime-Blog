@@ -26,7 +26,8 @@ namespace ForestTime.BusinessLayer.Concrete.ConcreteManager
 
         public Blog Get(Expression<Func<Blog, bool>> filter)
         {
-            throw new NotImplementedException();
+            var values = _blogDal.Get(filter);
+            return values;
         }
 
         public List<Blog> GetAll(Expression<Func<Blog, bool>>? filter = null)

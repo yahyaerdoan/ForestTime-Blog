@@ -1,12 +1,14 @@
-﻿<section class="section wb">
+﻿@model Blog
+<section class="section wb">
     <div class="container">
         <div class="row">
             <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                 <div class="page-wrapper">
                     <div class="blog-title-area">
-                        <span class="color-green"><a href="garden-category.html" title="">Gardening</a></span>
+                        <span class="color-green"><a href="garden-category.html" title="">@Model.Category.Name</a></span>
+                        <h3>@Model.BlogId</h3>
 
-                        <h3>The golden rules you need to know for a positive life</h3>
+                        <h3>@Model.Title</h3>
 
                         <div class="blog-meta big-meta">
                             <small><a href="garden-single.html" title="">21 July, 2017</a></small>

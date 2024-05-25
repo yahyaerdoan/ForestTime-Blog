@@ -1,4 +1,4 @@
-﻿
+﻿@model Blog
 @{
     ViewData["Title"] = "Blog Detail";
     Layout = "~/Views/Layout/Index.cshtml";
@@ -6,4 +6,4 @@
 
 @await Component.InvokeAsync("PageTitleViewComponentPartial",  ViewData["Title"])
 
-@await Component.InvokeAsync("BlogDetailViewComponentPartial")
+@await Component.InvokeAsync("BlogDetailViewComponentPartial", Model.BlogId)

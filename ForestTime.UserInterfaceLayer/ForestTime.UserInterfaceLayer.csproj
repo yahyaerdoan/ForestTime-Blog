@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ForestTime.BusinessLayer\ForestTime.BusinessLayer.csproj" />
-    <ProjectReference Include="..\ForestTime.DataTransferObjectlayer\ForestTime.DataTransferObjectlayer.csproj" />
+    <ProjectReference Include="..\ForestTime.DataTransferObjectlayer\ForestTime.DataTransferObjectLayer.csproj" />
   </ItemGroup>
 
 </Project>

@@ -15,10 +15,10 @@ namespace ForestTime.DataAccessLayer.Concrete.EntityFramework
             _forestTimeDbContext = forestTimeDbContext;
         }
 
-        public List<Blog> GetBlogsWithCategoryAndUser()
+        public async Task<List<Blog>> GetBlogsWithCategoryAndUserAsync()
         {
-            var values = _forestTimeDbContext.Blogs.AsNoTracking().Include(x=> x.Category).Include(y=> y.User).ToList();
-            return values;
+            var values = await _forestTimeDbContext.Blogs.AsNoTracking().Include(x => x.Category).Include(y => y.User).ToListAsync();
+            return (values);
         }
     }
 }

@@ -5,6 +5,6 @@ namespace ForestTime.DataAccessLayer.Abstract.IAbstactDal
 {
     public interface IBlogDal : IGenericRepository<Blog>
     {
-        List<Blog> GetBlogsWithCategoryAndUser();
+        Task<List<Blog>> GetBlogsWithCategoryAndUserAsync();
     }
 }

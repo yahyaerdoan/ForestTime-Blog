@@ -34,9 +34,9 @@ namespace ForestTime.BusinessLayer.Concrete.ConcreteManager
             throw new NotImplementedException();
         }
 
-        public List<Blog> GetBlogsWithCategoryAndUser()
+        public async Task<List<Blog>> GetBlogsWithCategoryAndUserAsync()
         {
-           var values = _blogDal.GetBlogsWithCategoryAndUser();
+            var values = await _blogDal.GetBlogsWithCategoryAndUserAsync();
             return values;
         }
 

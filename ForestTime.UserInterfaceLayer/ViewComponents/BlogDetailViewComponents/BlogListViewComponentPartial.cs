@@ -12,9 +12,9 @@ namespace ForestTime.UserInterfaceLayer.ViewComponents.BlogDetailViewComponents
             _blogService = blogService;
         }
 
-        public IViewComponentResult Invoke() 
+        public async Task<IViewComponentResult> InvokeAsync() 
         {
-            var values = _blogService.GetBlogsWithCategoryAndUser();
+            var values = await _blogService.GetBlogsWithCategoryAndUserAsync();
             return View(values); 
         }
     }

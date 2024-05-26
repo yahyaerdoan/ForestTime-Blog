@@ -47,6 +47,12 @@ namespace ForestTime.BusinessLayer.Concrete.ConcreteManager
             return values;
         }
 
+        public async Task<List<Blog>> GetLastTwoBlogByUserIdAsync(int id)
+        {
+            var values = await _blogDal.GetLastTwoBlogByUserIdAsync(id);
+            return values;
+        }
+
         public void Update(Blog entity)
         {
             throw new NotImplementedException();

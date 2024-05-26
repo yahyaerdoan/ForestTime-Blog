@@ -1,0 +1,27 @@
+﻿@model List<Blog>
+<div class="custombox clearfix">
+    <h4 class="small-title">You may also like</h4>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-6">
+                <div class="blog-box">
+                    <div class="post-media">
+                        <a href="garden-single.html" title="">
+                            <img src="/template/forest-time/upload/garden_single_03.jpg" alt="" class="img-fluid">
+                            <div class="hovereffect">
+                                <span class=""></span>
+                            </div><!-- end hover -->
+                        </a>
+                    </div><!-- end media -->
+                    <div class="blog-meta">
+                        <h4><a href="/BlogDetail/Index/@item.BlogId" title="">@item.Header</a></h4>
+                        <small><a href="blog-category-01.html" title="">Trends</a></small>
+                        <small><a href="blog-category-01.html" title="">21 July, 2017</a></small>
+                    </div><!-- end meta -->
+                </div><!-- end blog-box -->
+            </div>
+            <!-- end col -->
+        }
+    </div><!-- end row -->
+</div><!-- end custom-box -->

@@ -7,5 +7,6 @@ namespace ForestTime.BusinessLayer.Abstract.IAbstracService
     {
         Task<Blog?> GetBlogDetailById(int id);
         Task<List<Blog>> GetBlogsWithCategoryAndUserAsync();
+        Task<List<Blog>> GetLastTwoBlogByUserIdAsync(int id);
     } 
 }

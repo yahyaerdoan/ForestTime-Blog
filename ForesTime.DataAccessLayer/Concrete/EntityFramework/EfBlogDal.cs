@@ -4,6 +4,7 @@ using ForestTime.DataAccessLayer.Concrete.EfGenericRepository;
 using ForestTime.Entitylayer.Concrete;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ForestTime.DataAccessLayer.Concrete.EntityFramework
 {
@@ -25,6 +26,28 @@ namespace ForestTime.DataAccessLayer.Concrete.EntityFramework
         {
             var values = await _forestTimeDbContext.Blogs.AsNoTracking().Where(x=> x.BlogId == id).Include(x=> x.Category).Include(x=> x.User).  FirstOrDefaultAsync();
             return (values);
+        }
+
+        public async Task<List<Blog>> GetLastTwoBlogByUserIdAsync(int id)
+        {
+            int userId = await _forestTimeDbContext.Blogs.AsNoTracking().Where(x=> x.BlogId == id).Select(y=> y.UserId).FirstOrDefaultAsync();
+            var values = await _forestTimeDbContext.Blogs.AsNoTracking().Where(x=>x.UserId == userId).OrderByDescending(y=>y.BlogId).Take(2).ToListAsync();
+
+            #region You can simplify your method into a single LINQ query. one chained query, minimizing the number of database calls.
+
+            var valuesChainedQuery = await _forestTimeDbContext.Blogs
+                .AsNoTracking()
+                .Where(x => x.BlogId == id)
+                .SelectMany(blog => _forestTimeDbContext.Blogs
+                    .AsNoTracking()
+                    .Where(y=> y.UserId == blog.UserId)
+                    .OrderByDescending(y=> y.BlogId)
+                    .Take(2))
+                    .ToListAsync();
+
+            #endregion
+
+            return (valuesChainedQuery);
         }
     }
 }

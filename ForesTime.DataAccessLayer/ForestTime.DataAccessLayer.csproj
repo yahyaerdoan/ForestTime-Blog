@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ForestTime.DataTransferObjectlayer\ForestTime.DataTransferObjectLayer.csproj" />
     <ProjectReference Include="..\ForestTime.Entitylayer\ForestTime.Entitylayer.csproj" />
   </ItemGroup>
 

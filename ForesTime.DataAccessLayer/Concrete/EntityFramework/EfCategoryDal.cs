@@ -1,6 +1,7 @@
 ﻿using ForestTime.DataAccessLayer.Abstract.IAbstactDal;
 using ForestTime.DataAccessLayer.Concrete.Context;
 using ForestTime.DataAccessLayer.Concrete.EfGenericRepository;
+using ForestTime.DataTransferObjectLayer.CategoryDtos;
 using ForestTime.Entitylayer.Concrete;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -16,16 +17,18 @@ namespace ForestTime.DataAccessLayer.Concrete.EntityFramework
             _forestTimeDbContext = forestTimeDbContext;
         }
 
-        public async Task<List<(string CategoryName, int BlogCount)>> GetCategoriesWithBlogCountsAsync()
+        public async Task<List<CategoryBlogCountDto>> GetCategoriesWithBlogCountsAsync()
         {
             var categoriesCount = await _forestTimeDbContext.Categories
                 .AsNoTracking()
-                .Select(c => new { CategoryName = c.Name, BlogCount = c.Blogs.Count})
+                .Select(c => new CategoryBlogCountDto
+                {
+                    CategoryName = c.Name,
+                    BlogCount = c.Blogs.Count()
+                })
                 .ToListAsync();
 
-            return categoriesCount
-                .Select(c=> (c.CategoryName, categoriesCount.Count))
-                .ToList();              
+            return categoriesCount;            
         }
     }
 }

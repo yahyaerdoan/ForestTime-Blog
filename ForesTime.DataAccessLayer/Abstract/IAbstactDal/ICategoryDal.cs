@@ -5,4 +5,6 @@ namespace ForestTime.DataAccessLayer.Abstract.IAbstactDal
 {
     public interface ICategoryDal : IGenericRepository<Category>
     {
-    }   }
+        Task<List<(string CategoryName, int BlogCount)>> GetCategoriesWithBlogCountsAsync();
+    }   
+}

@@ -49,5 +49,11 @@ namespace ForestTime.DataAccessLayer.Concrete.EntityFramework
 
             return (valuesChainedQuery);
         }
+
+        public async Task<List<Blog>> GetBlogsByUserIdAsync(int id)
+        {
+            var values = await _forestTimeDbContext.Blogs.AsNoTracking().Where(x=> x.UserId == id).Include(y=>y.Category).ToListAsync();
+            return values;
+        }
     }
 }

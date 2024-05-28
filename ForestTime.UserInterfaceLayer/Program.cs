@@ -3,8 +3,10 @@ using ForestTime.BusinessLayer.Concrete.ConcreteManager;
 using ForestTime.DataAccessLayer.Abstract.IAbstactDal;
 using ForestTime.DataAccessLayer.Concrete.Context;
 using ForestTime.DataAccessLayer.Concrete.EntityFramework;
+using ForestTime.DataTransferObjectLayer.AutoMapper;
 using ForestTime.Entitylayer.Concrete;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +32,7 @@ builder.Services.AddIdentity<User, Role>()
     .AddEntityFrameworkStores<ForestTimeDbContext>();
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddAutoMapper(typeof(AutoMapperConfiguration));
 
 var app = builder.Build();
 
@@ -46,11 +49,19 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
-app.UseAuthorization();
+
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+});
 
 app.Run();

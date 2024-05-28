@@ -16,7 +16,7 @@ namespace ForestTime.BusinessLayer.Concrete.ConcreteManager
 
         public void Add(Blog entity)
         {
-            throw new NotImplementedException();
+            _blogDal.Add(entity);          
         }
 
         public void Delete(Blog entity)
@@ -38,6 +38,12 @@ namespace ForestTime.BusinessLayer.Concrete.ConcreteManager
         public async Task<Blog?> GetBlogDetailById(int id)
         {
             var values = await _blogDal.GetBlogDetailById(id);
+            return values;
+        }
+
+        public async Task<List<Blog>> GetBlogsByUserIdAsync(int id)
+        {
+            var values = await _blogDal.GetBlogsByUserIdAsync(id);
             return values;
         }
 

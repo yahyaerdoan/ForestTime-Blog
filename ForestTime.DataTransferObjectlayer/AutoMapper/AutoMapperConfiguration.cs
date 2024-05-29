@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using ForestTime.DataTransferObjectLayer.BlogDtos;
+using ForestTime.DataTransferObjectLayer.RoleDtos;
 using ForestTime.Entitylayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,8 @@ namespace ForestTime.DataTransferObjectLayer.AutoMapper
 		public AutoMapperConfiguration() 
 		{
 			CreateMap<Blog, CreateBlogDto>().ReverseMap();			
-		}
+            CreateMap<CreateRoleDto, Role>().ReverseMap();
+            CreateMap<UpdateRoleDto, Role>().ReverseMap();
+        }
 	}
 }

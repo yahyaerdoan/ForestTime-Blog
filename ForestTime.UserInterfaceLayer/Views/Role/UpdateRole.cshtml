@@ -1,0 +1,27 @@
+﻿@model UpdateRoleDto
+@{
+    ViewData["Title"] = "UpdateRole";
+    Layout = "~/Areas/User/Views/Shared/UserLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="card-header">
+        <h3 class="card-title">
+            <b>Update Role</b>
+        </h3>
+    </div>
+    <div class="card-body">
+        <form role="form" method="post" action="/Role/UpdateRole">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="text-danger">Title</label>
+                        <input type="hidden" class="form-control" placeholder="title" asp-for="Id">
+                        <input type="text" class="form-control" placeholder="title" asp-for="Name">
+                    </div>
+                </div>
+            </div>
+            <button style="margin-top:0rem" type="submit" class="btn btn-outline-success col-md-12">Create New Role</button>
+        </form>
+    </div>
+</div>

@@ -1,88 +1,58 @@
-﻿@model IEnumerable<ForestTime.Entitylayer.Concrete.Blog>
-
+﻿@model List<Blog>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/User/Views/Shared/UserLayout.cshtml";
 }
-
-<p>
-    <a asp-action="">Blog List</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Header)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CoverImageUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ThumbnailImageUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdatedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ViewingCount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>        
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Header)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CoverImageUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ThumbnailImageUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ViewingCount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.Name)
-            </td>          
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.BlogId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.BlogId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.BlogId">Delete</a>
-            </td>
-        </tr>
+@{
+    int count = 0;
 }
-    </tbody>
-</table>
+<div class="container-fluid">
+    <div class="card-header">
+        <h3 class="card-title">
+            <b>Blog List</b>
+        </h3>
+    </div>
+    <div class="card-body table-responsive p-0">
+        <table class="table table-hover text-decoration-none">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Header</th>
+                    <th>Description</th>
+                    <th>Created Date</th>
+                    <th>Status</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                    <th>Headers</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <td><b>@count</b></td>
+                        <td>@item.Title</td>
+                        <td class="text-danger">@item.Header</td>
+                        <td>@item.Description</td>
+                        <td>@item.CreatedDate</td>
+                        <td>@item.Status</td>
+                        <td>
+                            <a href="/Blog/UpdateBlog/@item.BlogId" class="btn btn-outline-primary sm">Update</a>
+                        </td>
+                        <td>
+                            <a href="/Blog/DeleteBlog/@item.BlogId" class="btn btn-outline-danger sm">Delete</a>
+                        </td>
+                        <td>
+                            <a href="/Blog/ContentByCategory/@item.BlogId" class="btn btn-outline-info sm">Blog</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div style="margin-top:1rem">
+            <a href="/User/Blog/CreateBlog" class="btn btn-outline-primary col-md-12">Create New Blog</a>
+        </div>
+    </div>
+</div>

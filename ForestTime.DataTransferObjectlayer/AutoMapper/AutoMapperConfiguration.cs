@@ -13,8 +13,7 @@ namespace ForestTime.DataTransferObjectLayer.AutoMapper
 	{
 		public AutoMapperConfiguration() 
 		{
-			CreateMap<Blog, CreateBlogDto>();
-			CreateMap<CreateBlogDto, Blog>();
+			CreateMap<Blog, CreateBlogDto>().ReverseMap();			
 		}
 	}
 }

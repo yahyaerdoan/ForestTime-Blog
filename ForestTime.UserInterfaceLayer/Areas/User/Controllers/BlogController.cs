@@ -10,7 +10,7 @@ namespace ForestTime.UserInterfaceLayer.Areas.User.Controllers
 {
     [Authorize]
     [Area("User")]
-    [Route("User/{controller=Home}/{action=Index}/{id?}")]
+    [Route("User/{controller}/{action}/{id?}")]
     public class BlogController : Controller
     {
 		private readonly IMapper _mapper;
@@ -44,9 +44,12 @@ namespace ForestTime.UserInterfaceLayer.Areas.User.Controllers
             createBlogDto.UserId = userId.Id;
             createBlogDto.CreatedDate = DateTime.Now;
             createBlogDto.UpdatedDate = DateTime.Now;
+			createBlogDto.ViewingCount = 1;
+			createBlogDto.Status = true;
+			createBlogDto.CategoryId = 2;
             var values = _mapper.Map<Blog>(createBlogDto);
 			_blogService.Add(values);
-			return RedirectToAction("Index");
+			return RedirectToAction("Index", "Blog");
 		}
 	}
 }

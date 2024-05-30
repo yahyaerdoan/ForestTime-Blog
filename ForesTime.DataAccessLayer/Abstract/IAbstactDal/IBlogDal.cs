@@ -9,5 +9,6 @@ namespace ForestTime.DataAccessLayer.Abstract.IAbstactDal
         Task<List<Blog>> GetBlogsWithCategoryAndUserAsync();
         Task<List<Blog>> GetLastTwoBlogByUserIdAsync(int id);
         Task<List<Blog>> GetBlogsByUserIdAsync(int id);
+        void IncreaseBlogViewingCount(int id);
     }
 }

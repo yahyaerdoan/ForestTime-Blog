@@ -55,5 +55,13 @@ namespace ForestTime.DataAccessLayer.Concrete.EntityFramework
             var values = await _forestTimeDbContext.Blogs.AsNoTracking().Where(x=> x.UserId == id).Include(y=>y.Category).ToListAsync();
             return values;
         }
+
+        public void IncreaseBlogViewingCount(int id)
+        {
+            var values = _forestTimeDbContext.Blogs.Where(x => x.BlogId == id).FirstOrDefault();
+            values.ViewingCount += 1;
+            _forestTimeDbContext.Update(values);
+            _forestTimeDbContext.SaveChanges();
+        }
     }
 }

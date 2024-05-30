@@ -15,6 +15,8 @@ namespace ForestTime.UserInterfaceLayer.Controllers.BlogDetails
         public IActionResult Index(int id)
         {
             var values = _blogService.Get(x=> x.BlogId == id);
+            _blogService.IncreaseBlogViewingCount(id);
+            ViewBag.BlogViewingCount = id;
             return View(values);
         }
     }

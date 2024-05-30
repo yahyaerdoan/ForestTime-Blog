@@ -3,6 +3,7 @@ using ForestTime.BusinessLayer.Abstract.IAbstracService;
 using ForestTime.DataTransferObjectLayer.BlogDtos;
 using ForestTime.DataTransferObjectLayer.RoleDtos;
 using ForestTime.Entitylayer.Concrete;
+using ForestTime.UserInterfaceLayer.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -70,6 +71,50 @@ namespace ForestTime.UserInterfaceLayer.Controllers.Entries
                 return RedirectToAction("Index");
             }
             return View();
+        }
+
+        public IActionResult UserList()
+        {
+            var values = _userManager.Users.ToList();
+            return View(values);
+        }
+
+        public async Task<IActionResult> AssingRole(int id)
+        {
+            var userId = _userManager.Users.FirstOrDefault(x=> x.Id == id);
+            TempData["x"] = userId.Id;
+            var roles = _roleManager.Roles.ToList();
+            var useRoles = await _userManager.GetRolesAsync(userId);
+            List<RoleAssingViewModel> roleAssingViewModel = new();
+            foreach (var role in roles)
+            {
+                RoleAssingViewModel model = new RoleAssingViewModel();
+                model.RoleId = role.Id;
+                model.RoleName = role.Name;
+                model.RoleExist = useRoles.Contains(role.Name);
+                roleAssingViewModel.Add(model);
+            }
+            return View(roleAssingViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AssingRole(List<RoleAssingViewModel> model)
+        {
+            var userId = (int)TempData["x"];
+            var user = _userManager.Users.FirstOrDefault(x => x.Id == userId);
+            foreach (var item in model)
+            {
+                if (item.RoleExist)
+                {
+                    await _userManager.AddToRoleAsync(user, item.RoleName);
+                }
+                else
+                {
+                    await _userManager.RemoveFromRoleAsync(user, item.RoleName);
+                }
+            }
+            return RedirectToAction("UserList");
+
         }
     }
 }

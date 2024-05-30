@@ -59,6 +59,11 @@ namespace ForestTime.BusinessLayer.Concrete.ConcreteManager
             return values;
         }
 
+        public void IncreaseBlogViewingCount(int id)
+        {
+            _blogDal.IncreaseBlogViewingCount(id);
+        }
+
         public void Update(Blog entity)
         {
             throw new NotImplementedException();
